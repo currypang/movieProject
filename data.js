@@ -7,44 +7,42 @@ const options = {
 };
 
 // tmdb 데이터 가져오기
-// jsonData.results - 영화모음[배열] // jsonData.results[1].poster_path - 포스터, jsonData.results[1].original_title - 제목
-// jsonData.results[1].overview - 내용, jsonData.results[1].vote_average - 평점
 async function getdata() {
   const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
-  const jsonData = await response.json();
+  const jsonData = await response.json(); // jsonData.results - 영화모음[배열]
+  // 영화모음(배열)을 순회하며 각 영화의 정보로 카드 만들기
   for (let i = 0; i < jsonData.results.length; i++) {
+    // 각 영화의 정보 지정하기
     let poster = `https://image.tmdb.org/t/p/w500${jsonData.results[i].poster_path}`;
     let title = jsonData.results[i].original_title;
     let content = jsonData.results[i].overview;
     let average = jsonData.results[i].vote_average
-
+    // 영화 카드 만들기
     let addCard = document.createElement("div");
     let addImg = document.createElement("img");
     let addTitle = document.createElement("h4");
     let addContent = document.createElement("p");
     let addAverage = document.createElement("p");
-
+    // 부모-자식 관계 설정
     addCard.appendChild(addImg);
     addCard.appendChild(addTitle);
     addCard.appendChild(addContent);
     addCard.appendChild(addAverage);
-
+    // 노드 속성 설정
     addCard.setAttribute("class", "card");
     addImg.setAttribute("id", "img");
     addTitle.setAttribute("id", "title");
     addContent.setAttribute("id", "content");
     addAverage.setAttribute("id", "average");
-
+    // 카드 붙여주기
     document.querySelector(".flex-container").append(addCard);
-
+    // 영화 정보 채우기
     addImg.src = poster;
     addTitle.textContent = title;
     addContent.textContent = content;
     addAverage.textContent = average;
   }
 }
-
+// 실행
 getdata();
-// function makeCard () {
 
-// }
