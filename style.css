@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+        * {
+            font-family: "Jua", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            align-content: center;
+        }
+        #header {
+            width: 40%;
+            border-radius: 2rem;
+            background-color: #D3AC2B;
+            text-align: center;
+        }
+        body {
+            background-color: #57648C;
+        }
+
+        .card {
+            width: 20%;
+            padding: 0, auto, 0, auto;
+            margin: 1rem;
+            text-align: center;
+            background-color: #D3AC2B;
+            border-radius: 2rem;
+        }
+
+        #img {
+            width: 70%;
+            height: 70%;
+            border-radius: 2rem;
+            margin-top: 1rem;
+        }
