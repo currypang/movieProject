@@ -19,6 +19,7 @@
             border-radius: 2rem;
             background-color: #D3AC2B;
             text-align: center;
+            margin: 0 auto 0 auto;
         }
         body {
             background-color: #57648C;
@@ -38,4 +39,12 @@
             height: 70%;
             border-radius: 2rem;
             margin-top: 1rem;
+        }
+
+        #box {
+            padding: 1rem 0 1rem 0;
+        }
+        #mainTitle {
+            margin: 0 auto 0 auto;
+            padding-top: 1rem;
         }
