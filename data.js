@@ -43,6 +43,15 @@ async function getdata() {
     addAverage.textContent = average;
   }
 }
-// 실행
+// 데이터 불러오기 실행
 getdata();
 
+// 검색 버튼 이벤트
+const btn = document.querySelector("#btn");
+btn.addEventListener("click", (event) => {
+  // event.preventDefault();
+  let text = document.getElementById("input").value;
+  
+
+
+});
