@@ -18,7 +18,7 @@ async function getdata() {
     let content = jsonData.results[i].overview;
     let average = jsonData.results[i].vote_average
     // 영화 카드 만들기
-    let addCard = document.createElement("div");
+    let addCard = document.createElement("li");
     let addImg = document.createElement("img");
     let addTitle = document.createElement("h4");
     let addContent = document.createElement("p");
@@ -45,13 +45,34 @@ async function getdata() {
 }
 // 데이터 불러오기 실행
 getdata();
-
 // 검색 버튼 이벤트
 const btn = document.querySelector("#btn");
 btn.addEventListener("click", (event) => {
-  // event.preventDefault();
+  event.preventDefault();
   let text = document.getElementById("input").value;
-  
+  let movieCard = document.getElementsByTagName('li');
 
+  for (let i = movieCard.length -1; i >= 0; i--) {
+    let movTitle = movieCard[i].children[1].innerText;
+    if (text !== movTitle) {
+      movieCard[i].remove();
+    }
+  }
 
+  // for (const element of movieCard) {
+  //   let movTitle = element.children[1].innerText;
+  //   if (text !== movTitle) {
+  //     element.classList.add("remove");
+  //   }
+  // }
+  // let removeCard = document.getElementsByClassName("remove");
+  // console.log(removeCard);
+  // for (const element of removeCard) {
+  //   element.remove();
+  //   console.log(removeCard);
+  // } 
+  // for(const element of movieCard) {
+  //   element.remove();
+  //   console.log(movieCard);
+  // }
 });
