@@ -45,9 +45,13 @@ async function getdata() {
 }
 // 데이터 불러오기 실행
 getdata();
-
-// 엔터키 눌렀을때 검색버튼 클릭
+// 새로고침 시 커서 인풋창에 두기
 const input = document.getElementById("input");
+function cursor() {
+  input.focus();
+}
+cursor();
+// 엔터키 눌렀을때 검색버튼 클릭
 input.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -65,7 +69,7 @@ btn.addEventListener("click", (event) => {
   // 배열메서드 사용위해 유사배열을 배열로 변환
   // const arrayCard = Array.from(movieCard); // map 메서드 대신 사용 가능
   const arrayCard = Object.keys(movieCard).map(el => movieCard[el]);
-  
+
 
   // foreach 매서드를 사용해 카드 탐색
   arrayCard.forEach((element, index) => {
@@ -73,7 +77,7 @@ btn.addEventListener("click", (event) => {
     // 검색창의 값과 영화카드의 제목이 같지 않으면 css를 통해 카드를 숨기는 id를 부여
     if (!movTitle.includes(text)) {
       movieCard[index].id = 'none';
-    // 검색창의 값이 제목에 포함되었다면 id부여를 통해 숨김해제 - 재검색때 필요
+      // 검색창의 값이 제목에 포함되었다면 id부여를 통해 숨김해제 - 재검색때 필요
     } else {
       movieCard[index].id = 'some';
     }
