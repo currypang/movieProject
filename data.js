@@ -45,6 +45,15 @@ async function getdata() {
 }
 // 데이터 불러오기 실행
 getdata();
+
+// 엔터키 눌렀을때 검색버튼 클릭
+const input = document.getElementById("input");
+input.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("btn").click();
+  }
+});
 // 검색 버튼 이벤트
 const btn = document.querySelector("#btn");
 btn.addEventListener("click", (event) => {
@@ -53,16 +62,18 @@ btn.addEventListener("click", (event) => {
   let text = document.getElementById("input").value.toUpperCase();
   // 영화카드 - for문 안의 movtTitle(영화 제목)도 대문자로 변환 
   let movieCard = document.getElementsByTagName('li')
+  // 배열메서드 사용위해 유사배열을 배열로 변환
+  const arrayCard = Array.from(movieCard);
+  // foreach 매서드를 사용해 카드 탐색
 
-  for (let i = 0; i < movieCard.length; i++) {
-    let movTitle = movieCard[i].children[1].innerText.toUpperCase();
+  arrayCard.forEach((element, index) => {
+    let movTitle = element.children[1].innerText.toUpperCase()
     // 검색창의 값과 영화카드의 제목이 같지 않으면 css를 통해 카드를 숨기는 id를 부여
     if (!movTitle.includes(text)) {
-      movieCard[i].id = 'none';
-    }
+      movieCard[index].id = 'none';
     // 검색창의 값이 제목에 포함되었다면 id부여를 통해 숨김해제 - 재검색때 필요
-    else {
-      movieCard[i].id = 'a';
+    } else {
+      movieCard[index].id = 'some';
     }
-  }
+  });
 });
