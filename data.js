@@ -63,9 +63,11 @@ btn.addEventListener("click", (event) => {
   // 영화카드 - for문 안의 movtTitle(영화 제목)도 대문자로 변환 
   let movieCard = document.getElementsByTagName('li')
   // 배열메서드 사용위해 유사배열을 배열로 변환
-  const arrayCard = Array.from(movieCard);
-  // foreach 매서드를 사용해 카드 탐색
+  // const arrayCard = Array.from(movieCard); // map 메서드 대신 사용 가능
+  const arrayCard = Object.keys(movieCard).map(el => movieCard[el]);
+  
 
+  // foreach 매서드를 사용해 카드 탐색
   arrayCard.forEach((element, index) => {
     let movTitle = element.children[1].innerText.toUpperCase()
     // 검색창의 값과 영화카드의 제목이 같지 않으면 css를 통해 카드를 숨기는 id를 부여
