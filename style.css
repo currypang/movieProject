@@ -33,7 +33,7 @@ body {
     padding: 0, auto, 0, auto;
     margin: 1rem;
     text-align: center;
-    background-color: #D3AC2B;
+    background-color: #938866;
     border-radius: 2rem;
 }
 
@@ -55,4 +55,8 @@ body {
 
 #content {
     padding: 1rem 1rem 1rem 1rem;
+}
+
+#none {
+    display: none;
 }

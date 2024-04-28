@@ -48,19 +48,16 @@ getdata();
 // 검색 버튼 이벤트
 const btn = document.querySelector("#btn");
 btn.addEventListener("click", (event) => {
-  location.reload();
   event.preventDefault();
   // 입력창의 밸류 값 - 대소문자 상관없이 서치하기 위해 대문자로 변환
   let text = document.getElementById("input").value.toUpperCase();
   // 영화카드 - for문 안의 movtTitle(영화 제목)도 대문자로 변환 
   let movieCard = document.getElementsByTagName('li')
-
-  // 검색창의 텍스트와 영화카드의 제목을 비교 - 검색어가 영화 제목에 포함되지 않으면 카드 삭제
-  // 인덱스 0 부터 순회하면 삭제하면 요소들이 당겨지면서 제대로 결과가 나오지 않음. 마지막 인덱스 부터 역순으로 순회하게 함.
-  for (let i = movieCard.length - 1; i >= 0; i--) {
+  // 검색창의 값과 영화카드의 제목이 같지 않으면 css를 통해 카드를 숨기는 id를 부여
+  for (let i = 0; i < movieCard.length; i++) {
     let movTitle = movieCard[i].children[1].innerText.toUpperCase();
-    if(!movTitle.includes(text)) {
-      movieCard[i].remove();
-    } 
+    if (!movTitle.includes(text)) {
+      movieCard[i].id = 'none'
+    }
   }
 });
