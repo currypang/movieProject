@@ -48,16 +48,21 @@ getdata();
 // 검색 버튼 이벤트
 const btn = document.querySelector("#btn");
 btn.addEventListener("click", (event) => {
-  event.preventDefault();
+  // event.preventDefault(); - form일때는 이벤트 발생시 웹페이지가 새로고침 되어서 사용해야함 / or 버튼에 타입 부여 or /form대신 div 사용
   // 입력창의 밸류 값 - 대소문자 상관없이 서치하기 위해 대문자로 변환
   let text = document.getElementById("input").value.toUpperCase();
   // 영화카드 - for문 안의 movtTitle(영화 제목)도 대문자로 변환 
   let movieCard = document.getElementsByTagName('li')
-  // 검색창의 값과 영화카드의 제목이 같지 않으면 css를 통해 카드를 숨기는 id를 부여
+
   for (let i = 0; i < movieCard.length; i++) {
     let movTitle = movieCard[i].children[1].innerText.toUpperCase();
+    // 검색창의 값과 영화카드의 제목이 같지 않으면 css를 통해 카드를 숨기는 id를 부여
     if (!movTitle.includes(text)) {
-      movieCard[i].id = 'none'
+      movieCard[i].id = 'none';
+    }
+    // 검색창의 값이 제목에 포함되었다면 id부여를 통해 숨김해제 - 재검색때 필요
+    else {
+      movieCard[i].id = 'a';
     }
   }
 });
