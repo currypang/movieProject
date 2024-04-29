@@ -5,16 +5,20 @@ const options = {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NzM1ZmE2ZmQ2MTE3M2I3Nzk2ZmEyNzUyNTNmNDE4NyIsInN1YiI6IjY2MmI0YTc4OWFjNTM1MDExZDhmMmRlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Vk4yeQ8AiQHmqX_sadQavDK7PIaoriDP50jL6m2DQHM'
   }
 };
-let jsonData = []
+
 // tmdb 데이터 가져오기
 async function fetchMovie() {
   const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
-  jsonData = await response.json(); // jsonData.results - 영화모음[배열]
+  const jsonData = await response.json(); // jsonData.results - 영화모음[배열]
   // 영화모음(배열)을 순회하며 각 영화의 정보로 카드 만들기
+  // console.log(jsonData)
   jsonData.results.forEach((movie) => {
     createCard(movie);
   });
+  alertCard(jsonData);
+}
 // 카드 눌렀을 때 영화 id 경고창으로 띄우기
+function alertCard(jsonData) {
   const card = document.getElementsByClassName("card")
   let arrc = Object.keys(card).map(el => card[el]);
   arrc.forEach((element, index) => {
@@ -24,6 +28,7 @@ async function fetchMovie() {
     })
   })
 }
+
 // 카드 생성 로직
 function createCard(movie) {
   let poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -60,7 +65,7 @@ function createCard(movie) {
 
 // 데이터 불러오기 실행
 fetchMovie();
-
+alertCard()
 
 // 새로고침 시 커서 인풋창에 두기
 const input = document.getElementById("input");
