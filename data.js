@@ -17,6 +17,7 @@ async function getdata() {
     let title = jsonData.results[i].original_title;
     let content = jsonData.results[i].overview;
     let average = jsonData.results[i].vote_average
+    let id = jsonData.results[i].id
     // 영화 카드 만들기
     let addCard = document.createElement("li");
     let addImg = document.createElement("img");
@@ -30,6 +31,7 @@ async function getdata() {
     addCard.appendChild(addAverage);
     // 노드 속성 설정
     addCard.setAttribute("class", "card");
+    addCard.setAttribute("id", `${id}`)
     addImg.setAttribute("id", "img");
     addTitle.setAttribute("id", "title");
     addContent.setAttribute("id", "content");
@@ -42,9 +44,22 @@ async function getdata() {
     addContent.textContent = content;
     addAverage.textContent = average;
   }
+  // 카드 눌렀을 때 영화 id 경고창으로 띄우기
+  let movie = jsonData
+  const card = document.getElementsByClassName("card")
+  let arrc = Object.keys(card).map(el => card[el]);
+  arrc.forEach((element, index) => {
+    let movieID = movie.results[index].id
+    element.addEventListener("click", (element) => {
+      alert(`영화 id : ${movieID}`)
+      console.log(element)
+    })
+  });
 }
+
 // 데이터 불러오기 실행
 getdata();
+
 // 새로고침 시 커서 인풋창에 두기
 const input = document.getElementById("input");
 function cursor() {
@@ -58,10 +73,11 @@ input.addEventListener("keypress", function (event) {
     document.getElementById("btn").click();
   }
 });
+
 // 검색 버튼 이벤트
 const btn = document.querySelector("#btn");
 btn.addEventListener("click", (event) => {
-  // event.preventDefault(); - form 태그에서 버튼 타입이 submit이면 이벤트 발생시 새로고침 ->버튼에 type=button 부여 or / form대신 div 사용
+  // event.preventDefault(); - form 태그에서 버튼 타입이 submit이면 이벤트 발생시 새로고침 -> 버튼에 type= "button" 부여 or / form대신 div 사용
   // 입력창의 밸류 값 - 대소문자 상관없이 서치하기 위해 대문자로 변환
   let text = document.getElementById("input").value.toUpperCase();
   // 영화카드 목록
@@ -82,4 +98,6 @@ btn.addEventListener("click", (event) => {
       movieCard[index].id = 'some';
     }
   });
+
 });
+
