@@ -69,8 +69,6 @@ function createCard(movie) {
 
 // 데이터 불러오기 실행
 fetchMovie();
-alertCard();
-
 // 새로고침 시 커서 인풋창에 두기
 const input = document.getElementById("input");
 function cursor() {
