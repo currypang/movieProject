@@ -11,52 +11,54 @@
       crossorigin="anonymous"
     />
     <script type="module" src="./src/detail.js"></script>
+    <link rel="stylesheet" href="./style/style_sub.css" />
   </head>
   <body>
-    <form id="comment-box">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          id="input-writer"
-        />
-        <span class="input-group-text"></span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="password"
-          aria-label="Server"
-          id="password"
-          type="password"
-        />
-      </div>
-      <div class="input-group">
-        <span class="input-group-text">With textarea</span>
-        <textarea
-          class="form-control"
-          aria-label="With textarea"
-          id="input-review"
-        ></textarea>
-      </div>
-      <button type="button" class="btn btn-secondary" id="button">
-        댓글 달기
-      </button>
-    </form>
-    <br />
-    <br />
-    <br />
-    <form id="revise-box">
-      <label id="revise-title">리뷰 수정</label>
-      <div>
-        <textarea id="revise-review"></textarea>
-      </div>
+    <div class="container">
+      <form id="comment-box">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            aria-label="Username"
+            id="input-writer"
+          />
+          <span class="input-group-text"></span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="password"
+            aria-label="Server"
+            id="password"
+            type="password"
+          />
+        </div>
+        <div class="input-group">
+          <span class="input-group-text">With textarea</span>
+          <textarea
+            class="form-control"
+            aria-label="With textarea"
+            id="input-review"
+          ></textarea>
+        </div>
+        <button type="button" class="btn btn-secondary" id="button">
+          댓글 달기
+        </button>
+      </form>
       <br />
-      <span>비번</span> <input id="revise-password" type="password" />
-    </form>
-    <ul id="comment-list"></ul>
-
+      <br />
+      <br />
+      <form id="revise-box">
+        <label id="revise-title">리뷰 수정</label>
+        <div>
+          <textarea id="revise-review"></textarea>
+        </div>
+        <br />
+        <span>비번</span> <input id="revise-password" type="password" />
+      </form>
+      <ul id="comment-list"></ul>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
