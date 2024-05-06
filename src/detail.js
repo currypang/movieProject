@@ -1,11 +1,17 @@
 import { fetchMovie } from "./movie.js";
+import {
+  postComment,
+  getComment,
+  deleteComment,
+  reviseComment,
+} from "./comment.js";
 
 const cards = await fetchMovie(); // 영화 배열
 function getSubMovies() {
-  console.log(cards);
+  // console.log(cards);
   const url = window.location.href; // window.location.href => http://127.0.0.1:5500/sub_page.html?value=238
   const movieID = Number(url.split("=").pop()); // 238
-  console.log(movieID);
+  // console.log(movieID);
 
   const options = {
     method: "GET",
@@ -19,13 +25,18 @@ function getSubMovies() {
   fetch(`https://api.themoviedb.org/3/movie/${movieID}?language=en-US`, options)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       let title = data.title;
       let img = data.poster_path;
 
-      console.log(data.title);
-      console.log(data.poster_path);
+      // console.log(data.title);
+      // console.log(data.poster_path);
     })
     .catch((err) => console.error(err));
 }
 getSubMovies();
+const button = document.getElementById("button");
+button.addEventListener("click", postComment);
+getComment();
+reviseComment();
+deleteComment();
