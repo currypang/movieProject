@@ -19,4 +19,6 @@ let b = {
 let f = "44ca9320-13aa-4576-a7e8-67b3dda7da14";
 // console.log(b);
 delete b[f];
+
+console.log(b);
 console.log(b);
