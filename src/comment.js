@@ -38,7 +38,7 @@ function postComment() {
 
 // 리뷰 불러오기
 function getComment() {
-  const list = document.querySelector("#comment-list");
+  const list = document.querySelector("#review-list");
   let dom = "";
   if (storage[movieId]) {
     let parsedData = JSON.parse(storage[movieId]);
@@ -98,7 +98,7 @@ function deleteComment() {
       // 불러온 로컬 스토리지 데이터에서 <li> 태그에 저장된 유저 id의 키값 삭제
       let id = e.target.parentNode.id;
       delete currentData[id];
-      // 키값 삭제된 로컬스토리지 setItem 메서드로 재생성
+      // 키값 삭제된 로컬스토리지 setItem 메서드로 재생
       localStorage.setItem(movieId, JSON.stringify(currentData));
       window.location.reload();
     });
