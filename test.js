@@ -23,3 +23,4 @@ delete b[f];
 console.log(b);
 console.log(b);
 console.log(b);
+console.log(b);
